@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube MP3変換</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        img {
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 22px;
+        }
+
+        p {
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+<h1>YouTube MP3変換</h1>
+
+<form method="POST">
+    <input type="text" name="url" placeholder="YouTube URLを入力" required>
+    <button type="submit">変換</button>
+</form>
+
+{% if title %}
+
+<hr>
+
+<img src="{{ thumbnail }}" width="100%">
+
+<h2>{{ title }}</h2>
+
+<p>投稿者: {{ channel }}</p>
+<p>動画時間: {{ duration }}</p>
+
+<form action="/download" method="POST">
+    <input type="hidden" name="url" value="{{ url }}">
+    <button type="submit">MP3をダウンロード</button>
+</form>
+
+{% endif %}
+
+</body>
+</html>
